@@ -81,18 +81,6 @@ class ReviewLike(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.CharField(max_length=128)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
-class CommentLike(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
 class Initiative(models.Model):
     STATUSES = [
         ('Initiated', 'Initiated'),
@@ -110,4 +98,25 @@ class Initiative(models.Model):
 class InitiativeLike(models.Model):
     initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    initiative = models.ForeignKey(Initiative, on_delete=models.CASCADE)
+    text = models.CharField(max_length=128)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class CommentLike(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Notification(models.Model):
+    sender = models.ForeignKey(User, related_name='alerts', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE)
+    text = models.CharField(max_length=256)
+    is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
