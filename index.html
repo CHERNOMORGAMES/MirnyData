@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ВИРТУАЛЬНАЯ ТРИБУНА</title>
+	<script src="three.min.js"></script>
+	<script src="js/mdstadium.js"></script>
+	<script src="js/mdscene.js"></script>
+</head>
+<body>
+
+<script>
+
+let test = new MDTest();
+
+anim_update();
+
+function anim_update(){
+	test.mesh.rotation.x += MDTest.rotX; //0.1
+	test.mesh.rotation.y += MDTest.rotY; //0.01
+	test.mesh.rotation.z += MDTest.rotZ; // 0.1
+	test.render();
+	requestAnimationFrame(anim_update); //Передача изменений шагом AnimationFrame. На саму сцену изменения вносятся автоматически.
+}
+
+</script>
+
+</body>
+</html>
