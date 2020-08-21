@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from backend.api import models
+from api import models
 
 admin.site.register(models.User)
 admin.site.register(models.Team)
