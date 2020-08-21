@@ -2,28 +2,16 @@
 <html>
 <head>
 	<title>ВИРТУАЛЬНАЯ ТРИБУНА</title>
-	<script src="three.min.js"></script>
-	<script src="js/mdstadium.js"></script>
-	<script src="js/mdscene.js"></script>
+	<script src="frontend/jslib/three.min.js"></script>
 	<style> body{margin: 0;} canvas{display: block;} header{position: absolute; color: white; font-size: medium;} </style>
 </head>
 <body>
 
 <header>МирныйData - АТОМ</header>
 
+<script src="frontend/js/mdstadium.js"></script> <!-- Класс данных стадиона -->
+<script src="frontend/js/mdscene.js"></script> <!-- Класс 3D Сцены -->
 <script>
-
-let test = new MDTest();
-
-anim_update();
-
-function anim_update(){
-	test.mesh.rotation.x += MDTest.rotX; //0.1
-	test.mesh.rotation.y += MDTest.rotY; //0.01
-	test.mesh.rotation.z += MDTest.rotZ; // 0.1
-	test.render();
-	requestAnimationFrame(anim_update); //Передача изменений шагом AnimationFrame. На саму сцену изменения вносятся автоматически.
-}
 
 </script>
 
