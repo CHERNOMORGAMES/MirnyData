@@ -94,5 +94,6 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'api.User'
 
+MEDIA_URL = '/media/'
+
 MEDIA_ROOT = 'media/'
-MEDIA_URL = '/'

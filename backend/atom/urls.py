@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import RedirectView
 from api import views as v
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,5 +13,4 @@ urlpatterns = [
     path('initiatives/', v.InitiativesView.as_view(), name='initiatives'),
     path('cabinet/<int:pk>/', v.CabinetView.as_view(), name='cabinet'),
     path('notifications/', v.NotificationsView.as_view(), name='notifications'),
-
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
