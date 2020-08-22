@@ -86,7 +86,7 @@ function anim_update(){
 }
 
 function set_mesh(n){
-	let geometry = new THREE.SphereGeometry(0.5, 16, 32);
+	let geometry = new THREE.SphereGeometry(0.1, 16, 32);
 
 	var texture = new THREE.TextureLoader().load( 'frontend/img/Football.jpg' );
 	
@@ -114,7 +114,7 @@ function onWindowResize() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(100);
+set_mesh(1000);
 rand_position();
 anim_update();
 initEventListeners();
