@@ -70,8 +70,8 @@ class MDScene {
 
 function rand_position(){
 	MDScene.objects.forEach(mesh => {
-	mesh.position.x = Math.random()*4 -2;
-	mesh.position.y = Math.random()*2;
+	mesh.position.x = Math.random()*40 -20;
+	mesh.position.y = Math.random()*15 ;
 	mesh.position.z = Math.random()*2 -40;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
@@ -141,7 +141,7 @@ function set_ground() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(1000);
+set_mesh(5000);
 rand_position();
 
 let mover = Array(MDScene.objects.length -1).fill(1);
