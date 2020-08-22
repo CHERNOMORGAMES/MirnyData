@@ -5,7 +5,7 @@ class MDScene {
  	static objects = [];
 	static scene = new THREE.Scene();
 	static camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.01, 100 );
-	static renderer = new THREE.WebGLRenderer({ antialias: true }); //{ antialias: true } 
+	static renderer = new THREE.WebGLRenderer({ antialias: true });
 	static light = new THREE.AmbientLight( 0xffffff ) ;
 	static controls;
 
@@ -71,19 +71,24 @@ class MDScene {
 function rand_position(){
 	MDScene.objects.forEach(mesh => {
 	mesh.position.x = Math.random()*4 -2;
-	mesh.position.y = Math.random()*6 -3;
-	mesh.position.z = Math.random()*2 -1;
+	mesh.position.y = Math.random()*2;
+	mesh.position.z = Math.random()*2 -50;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
 }
 
 function anim_update(){
-	MDScene.objects.forEach(mesh => {
+	MDScene.objects.forEach((mesh, i) => {
 	mesh.rotation.x += MDScene.rotX; //0.1
 	mesh.rotation.y += MDScene.rotY; //0.01
 	mesh.rotation.z += MDScene.rotZ; // 0.1
-	//let rand = Math.random(); 
-	//rand >= 0.5 ? mesh.position.z += rand/10 : mesh.position.z -= rand/10;
+
+	//let vector3 = new THREE.Vector3( 0, 1, 0 );
+
+	if (mesh.position.y > 2) {mover[i] = -1;}
+	if (mesh.position.y < -1.9) {mover[i] = 1;} 
+	mesh.position.y += 0.003 * mover[i];
+	mesh.position.z += 0.03;
 	});
 	test.update(); // Отрисовка изменений
 	requestAnimationFrame(anim_update); //Передача изменений шагом AnimationFrame.
@@ -126,7 +131,7 @@ function set_ground() {
 	let material = new THREE.MeshLambertMaterial( { map: texture } );
 
 	let mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 400, 400 ), material );
-	mesh.position.y = -1;
+	mesh.position.y = -2;
 	mesh.rotation.x = - Math.PI / 2;
 	mesh.receiveShadow = true;
 	MDScene.scene.add( mesh );
@@ -136,8 +141,12 @@ function set_ground() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(5);
+set_mesh(100);
 rand_position();
+
+let mover = Array(MDScene.objects.length -1).fill(1);
+
 anim_update();
 initEventListeners();
 set_ground();
+console.log(MDScene.objects.length);
