@@ -32,7 +32,7 @@ class MDScene {
 	}
 
 	init(camera, scene, renderer, light) {
-		camera.position.z = 10;
+		camera.position.z = 5;
 		scene.add( light );
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		document.body.appendChild(renderer.domElement);
