@@ -13,4 +13,6 @@ urlpatterns = [
     path('initiatives/', v.InitiativesView.as_view(), name='initiatives'),
     path('cabinet/<int:pk>/', v.CabinetView.as_view(), name='cabinet'),
     path('notifications/', v.NotificationsView.as_view(), name='notifications'),
+    path('estimate/<int:pk>/', v.EstimateTeam.as_view(), name='estimate'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

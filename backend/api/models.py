@@ -20,15 +20,19 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
+    ADMIN = 10
+    OWNER = 8
+    FANAT = 2
+    HOOLIGUN = 1
     TYPES = [
-        ('Admin', 'Admin'),
-        ('Owner', 'Owner'),
-        ('Fanat', 'Fanat'),
-        ('Hooligun', 'Hooligun')
+        (ADMIN, 'Admin'),
+        (OWNER, 'Owner'),
+        (FANAT, 'Fanat'),
+        (HOOLIGUN, 'Hooligun')
     ]
     username = models.CharField(max_length=128, blank=True, null=True, default='')
     email = models.EmailField(null=False, unique=True)
-    type = models.CharField(max_length=32, choices=TYPES, default='Hooligun')
+    type = models.PositiveSmallIntegerField(choices=TYPES, default=HOOLIGUN)
     created_at = models.DateTimeField(auto_now_add=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
@@ -47,8 +51,30 @@ class Team(models.Model):
         return self.name
 
 
-class Event(models.Model):
+class Player(models.Model):
+    POSITIONS = [
+        ('Goalkeeper', 'Goalkeeper'),
+        ('Defender', 'Defender'),
+        ('Halfback', 'Halfback'),
+        ('Forward', 'Forward')
+    ]
     name = models.CharField(max_length=256)
+    position = models.CharField(max_length=128, choices=POSITIONS, null=True)
+    age = models.PositiveIntegerField(null=True)
+    number = models.PositiveIntegerField(null=True)
+    team = models.ForeignKey(Team, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Event(models.Model):
+    TYPES = [
+        ('Game', 'Game'),
+        ('Event', 'Event'),
+    ]
+    name = models.CharField(max_length=256)
+    type = models.CharField(max_length=128, choices=TYPES, default='Game')
     date = models.DateTimeField()
     duration = models.CharField(max_length=1024, blank=True)
     info = models.CharField(max_length=1024, blank=True)
@@ -62,9 +88,21 @@ class Event(models.Model):
         return self.name
 
 
+class EventPlayer(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+
+
 class EventLike(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Estimate(models.Model):
+    event_player = models.ForeignKey(EventPlayer, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    estimation = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
 

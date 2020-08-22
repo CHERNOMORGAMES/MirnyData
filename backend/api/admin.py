@@ -13,9 +13,14 @@ class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'city')
 
 
+class PlayerAdmn(admin.ModelAdmin):
+    model = models.Player
+    list_display = ('name', 'age', 'team', 'position', 'number')
+
+
 class EventAdmin(admin.ModelAdmin):
     model = models.Event
-    list_display = ('name', 'date', 'duration', 'info', 'address', 'team', 'image')
+    list_display = ('name', 'type', 'date', 'duration', 'info', 'address', 'team', 'image')
 
 
 admin.site.register(models.User, UserAdmin)

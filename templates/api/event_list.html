@@ -8,9 +8,19 @@
         <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'cabinet' pk=user.id %}">Кабинет</a>
         <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'notifications' %}">Нотификации</a>
     </nav>
+    <br>
+    {% if user.type > 5 %}
+        <button class="btn btn-small btn-success">Добавить эвент</button>
+    {% endif %}
     {% for event in events %}
+        <hr class="line">
         <div>
-            <img src="{{ event.image.url }}">
+            <p>{{ event.name }}</p>
+            <img class="event-image" src="{{ event.image.url }}"><span> Когда: {{ event.date }}</span>
+            {% if event.date < now %}
+                <p>Игра закончилась! Спеши <a href="{% url 'estimate' pk=event.id %}">оценить команду</a>.</p>
+            {% endif %}
         </div>
     {% endfor %}
+
 {% endblock %}
