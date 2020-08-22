@@ -71,7 +71,7 @@ class MDScene {
 function rand_position(){
 	MDScene.objects.forEach(mesh => {
 	mesh.position.x = 0;
-	mesh.position.y = -1.9;
+	mesh.position.y = -1.4;
 	mesh.position.z = -4;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
