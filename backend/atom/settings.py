@@ -33,7 +33,10 @@ ROOT_URLCONF = 'atom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            '/home/oem/Documents/MirnyData/templates',
+            '/home/ubuntu/MirnyData/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,4 +87,12 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = 'static/'
 
+STATICFILES_DIRS = [
+    '/home/oem/Documents/MirnyData/static/',
+    '/home/ubuntu/MirnyData/static/',
+]
+
 AUTH_USER_MODEL = 'api.User'
+
+MEDIA_ROOT = 'media/'
+MEDIA_URL = '/'

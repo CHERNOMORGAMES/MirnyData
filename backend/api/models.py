@@ -52,6 +52,7 @@ class Event(models.Model):
     date = models.DateTimeField()
     duration = models.CharField(max_length=1024, blank=True)
     info = models.CharField(max_length=1024, blank=True)
+    image = models.ImageField(null=True)
     address = models.CharField(max_length=512)
     team = models.ForeignKey(Team, null=True, on_delete=models.CASCADE)
     participants = models.ManyToManyField(User, related_name='events')

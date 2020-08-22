@@ -1,0 +1,12 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link" href="#">Главная</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'teams' %}">Команды</a>
+        <a class="flex-sm-fill text-sm-center nav-link active" href="{% url 'initiatives' %}">Инициативы</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'cabinet' pk=user.id %}">Кабинет</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'notifications' %}">Нотификации</a>
+    </nav>
+    initiatives
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link active" href="{% url 'dashboard' %}">Главная</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'teams' %}">Команды</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'initiatives' %}">Инициативы</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'cabinet' pk=user.id %}">Кабинет</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'notifications' %}">Нотификации</a>
+    </nav>
+    {% for event in events %}
+        <div>
+            <img src="{{ event.image.url }}">
+        </div>
+    {% endfor %}
+{% endblock %}

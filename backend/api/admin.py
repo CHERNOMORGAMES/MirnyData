@@ -8,9 +8,19 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('email', 'type', 'is_staff', 'is_superuser')
 
 
-admin.site.register(models.User)
-admin.site.register(models.Team)
-admin.site.register(models.Event)
+class TeamAdmin(admin.ModelAdmin):
+    model = models.Team
+    list_display = ('name', 'city')
+
+
+class EventAdmin(admin.ModelAdmin):
+    model = models.Event
+    list_display = ('name', 'date', 'duration', 'info', 'address', 'team', 'image')
+
+
+admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Team, TeamAdmin)
+admin.site.register(models.Event, EventAdmin)
 admin.site.register(models.Review)
 admin.site.register(models.Initiative)
 admin.site.register(models.Comment)
