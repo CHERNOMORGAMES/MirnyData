@@ -42,13 +42,19 @@ header{
 }
 
 .match{
-	border
-	display: flex;
-	margin: 0;
-  padding: 15%;
+	margin: 10px;
+	margin-left: 20px;
+  padding: 0px;
   flex-grow: 2;
-	flex-flow: row nowrap;
 }
+
+.match *{
+	margin: 0px;
+  padding: 0px;
+}
+
+li{list-style-type: none;}
+canvas{display: block;}
 
 footer{
 	position: fixed;
@@ -58,10 +64,6 @@ footer{
 	display: flex;
 	flex-flow: row nowrap;
 }
-
-h1, h2, h3{display: block;}
-li{list-style-type: none;}
-canvas{display: block;}
 
 button{width: 34%;
   position: relative;

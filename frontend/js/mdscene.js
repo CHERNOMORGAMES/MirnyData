@@ -9,9 +9,9 @@ class MDScene {
 	static light = new THREE.AmbientLight( 0xffffff ) ;
 	static controls;
 
-	static rotX = 0.05;
+	static rotX = 0.01;
 	static rotY = 0.01;
-	static rotZ = 0.05;
+	static rotZ = 0.01;
 
 	static posX = 0.0;
 	static posY = 0.0;
@@ -29,7 +29,7 @@ class MDScene {
 	}
 
 	init(camera, scene, renderer, light) {
-		camera.position.z = 5;
+		camera.position.z = 7;
 
 		MDScene.controls = new THREE.OrbitControls( camera, renderer.domElement );
 		MDScene.controls.minPolarAngle = Math.PI * 1 / 4;
