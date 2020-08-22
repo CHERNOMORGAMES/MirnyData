@@ -1,13 +1,6 @@
-class MDScene {
-	static #MAX_INSTANCES = 1;
- 	static #instances = 0;
-
+//ЧЕРНОВИК!!!!!
+class MDPlayer {
  	static objects = [];
-	static scene = new THREE.Scene();
-	static camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.01, 100 );
-	static renderer = new THREE.WebGLRenderer({ antialias: true });
-	static light = new THREE.AmbientLight( 0xffffff ) ;
-	static controls;
 
 	static rotX = 0.05;
 	static rotY = 0.01;
@@ -18,11 +11,7 @@ class MDScene {
 	static posZ = 0.0;
 
 	constructor(background, fog) {
-		MDScene.#instances++;
-    if (MDScene.#instances > MDScene.#MAX_INSTANCES) {throw new Error('MDScene is a singleton - instance already exists');}
 		
-		background ? MDScene.scene.background = background : MDScene.scene.background = new THREE.Color( 0x3b83bd );
-		fog ? MDScene.scene.fog = fog : MDScene.scene.fog = new THREE.Fog( 0xcce0ff, 20, 100 ); //Fog instance( color : Integer, near : Float, far : Float )
 
 		this.init(MDScene.camera, MDScene.scene, MDScene.renderer, MDScene.light);
 		this.update();
@@ -70,9 +59,9 @@ class MDScene {
 
 function rand_position(){
 	MDScene.objects.forEach(mesh => {
-	mesh.position.x = 0;
-	mesh.position.y = -1.9;
-	mesh.position.z = -4;
+	mesh.position.x = Math.random()*40 -20;
+	mesh.position.y = Math.random()*15 ;
+	mesh.position.z = Math.random()*2 -40;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
 }
@@ -84,19 +73,18 @@ function anim_update(){
 	mesh.rotation.z += MDScene.rotZ; // 0.1
 
 	//let vector3 = new THREE.Vector3( 0, 1, 0 );
-	/*
+
 	if (mesh.position.y > 1) {mover[i] = -1;}
 	if (mesh.position.y < -1.9) {mover[i] = 1;} 
 	mesh.position.y += 0.003 * mover[i];
 	mesh.position.z += 0.03;
-	*/
 	});
 	test.update(); // Отрисовка изменений
 	requestAnimationFrame(anim_update); //Передача изменений шагом AnimationFrame.
 }
 
 function set_mesh(n){
-	let geometry = new THREE.SphereGeometry(0.5, 16, 32);
+	let geometry = new THREE.SphereGeometry(0.1, 16, 32);
 
 	var texture = new THREE.TextureLoader().load( 'frontend/img/Football.jpg' );
 	
@@ -142,10 +130,10 @@ function set_ground() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(1);
+set_mesh(5000);
 rand_position();
 
-//let mover = Array(MDScene.objects.length -1).fill(1);
+let mover = Array(MDScene.objects.length -1).fill(1);
 
 anim_update();
 initEventListeners();
