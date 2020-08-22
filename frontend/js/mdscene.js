@@ -72,7 +72,7 @@ function rand_position(){
 	MDScene.objects.forEach(mesh => {
 	mesh.position.x = Math.random()*4 -2;
 	mesh.position.y = Math.random()*2;
-	mesh.position.z = Math.random()*2 -50;
+	mesh.position.z = Math.random()*2 -40;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
 }
@@ -85,7 +85,7 @@ function anim_update(){
 
 	//let vector3 = new THREE.Vector3( 0, 1, 0 );
 
-	if (mesh.position.y > 2) {mover[i] = -1;}
+	if (mesh.position.y > 1) {mover[i] = -1;}
 	if (mesh.position.y < -1.9) {mover[i] = 1;} 
 	mesh.position.y += 0.003 * mover[i];
 	mesh.position.z += 0.03;
@@ -141,7 +141,7 @@ function set_ground() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(100);
+set_mesh(1000);
 rand_position();
 
 let mover = Array(MDScene.objects.length -1).fill(1);
