@@ -16,10 +16,6 @@ class MDScene {
 	static posY = 0.0;
 	static posZ = 0.0;
 
-	geometry;
-	material;
-	mesh;
-
 	constructor(background, fog) {
 		MDScene.#instances++;
     if (MDScene.#instances > MDScene.#MAX_INSTANCES) {throw new Error('MDScene is a singleton - instance already exists');}
@@ -68,7 +64,7 @@ function rand_position(){
 	MDScene.objects.forEach(mesh => {
 	mesh.position.x = Math.random()*4 -2;
 	mesh.position.y = Math.random()*6 -3;
-	mesh.position.z = Math.random()*4 -2;
+	mesh.position.z = Math.random()*2 -1;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
 }
@@ -114,7 +110,7 @@ function onWindowResize() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(1000);
+set_mesh(100);
 rand_position();
 anim_update();
 initEventListeners();
