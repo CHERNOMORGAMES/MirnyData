@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Refresh" content="60" />
-	<title>#МирныйData - АТОМ</title>
+	<!--<meta http-equiv="Refresh" content="60" />-->
+	<title>МирныйData - АТОМ</title>
+	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 	<script src="frontend/jslib/three.min.js"></script>
-	<script src="frontend/jslib/orbit.js"></script>
 	<script src="frontend/jslib/orbit.js"></script>
 <style>
 
@@ -13,179 +13,157 @@ html {
   margin: 0;
   padding: 0;
   background: #272727;
+  touch-action: manipulation;
 }
 
 body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: flex-start;
-	align-items: center; 
-	font-family: Raleway, Geneva, sans-serif;
+  font-family: 'Russo One', sans-serif;
 	color: white;
 	background: #272727;
+	touch-action: manipulation;
 }
 
-section {
-  margin: 0;
-  padding: 0;
+header{
+	position: fixed;
+	height : 7%;
+	width: 100%;
+	top: 0;
+	color: white;
+	display: flex;
+	flex-flow: row nowrap;
+  
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
 }
 
-h1 {
-  font-size: 2vw;
+.match{
+	border
+	display: flex;
+	margin: 0;
+  padding: 15%;
+  flex-grow: 2;
+	flex-flow: row nowrap;
 }
 
-h2 *{
-  margin: 0 1vw;
-  padding: 0;
-  font-size: 2vw;
-  color: khaki;
+footer{
+	position: fixed;
+	height : 9%;
+	width: 100%;
+	bottom : 0;
+	display: flex;
+	flex-flow: row nowrap;
 }
 
-body{margin: 0;}
-canvas{display: block;}
-header{position: fixed; height : 7%; width: 100%; top:0 ; color: white; font-size: medium; background: green;} 
-footer{position: fixed; height : 9%; width: 100%; bottom : 0; background: green;}
+h1, h2, h3{display: block;}
 li{list-style-type: none;}
+canvas{display: block;}
 
-
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color: transparent
-}
-html,body{
-  height:100%;
-  touch-action: manipulation;
-}
-body{
-  display:flex;
-
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  
-  font-family:"Roboto", sans-serif;
-  background-color: #f4f5f6;
-  font-size:14px;
-  color:#666666;
-}
-.button{
-  position:relative;
-  
-  padding:0;
-  width:200px;
-  height:200px;
-  
-  border:4px solid #888888;
-  outline:none;
-  background-color:#f4f5f6;
-  border-radius: 20px;
-  box-shadow:  -6px -20px 35px #ffffff, -6px -10px 15px #ffffff, -20px 0px 30px #ffffff, 6px 20px 25px rgba(0,0,0,0.2);
-  transition: .13s ease-in-out;
-  cursor:pointer;
-  &:active{
-    box-shadow:none;
-    .button__content{
-      box-shadow: none;
-      .button__text, .button__icon{
-        transform:translate3d(0px, 0px, 0px);
-      }
-    }
-  }
-  &__content{
-    position:relative;
-    display:grid;
-    
-    padding:20px;
-    width:100%;
-    height:100%;
-
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr;
-    
-    box-shadow:inset 0px -8px 0px #dddddd, 0px -8px 0px #f4f5f6;
-    border-radius: 40px;
-    transition: .13s ease-in-out; 
-    
-    z-index:1;
-  }
-  &__icon{
-    position:relative;
-    display:flex;
-    
-    transform:translate3d(0px, -4px, 0px);
-    grid-column:4;
-    align-self:start;
-    justify-self:end;
-    width:32px;
-    height:32px;
-    transition: .13s ease-in-out; 
-    svg{
-      width:32px;
-      height:32px;
-      fill:#aaaaaa;
-    }
-  }
-  &__text{
-      position:relative;
-    
-      transform:translate3d(0px, -4px, 0px);
-      margin:0;
-      align-self:end;
-      grid-column:1/5;
-      grid-row:2;
-
-      text-align:center;
-      font-size: 32px;
-      background-color: #888888;
-      color: transparent;
-      text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
-      -webkit-background-clip: text;
-         -moz-background-clip: text;
-              background-clip: text;
-      transition: .13s ease-in-out; 
-  }
-}
-.credits{
-  margin-top:24px;
-  &__reference{
-      display:inline-block;
-
-      border-bottom: 1px solid transparent;
-      color:#0099ff;
-      text-decoration:none;
-      transition: ease-in .13s;
-      &:hover{
-         border-bottom-color: #0099ff;
-      }
-   }
+button{width: 34%;
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
+  text-decoration: none;
+  user-select: none;
+  padding: .3em .7em;
+  outline: none;
+  border-radius: 7px;
+  background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
+  box-shadow:
+   inset -2px -2px rgba(0,0,0,.3),
+   inset 2px 2px rgba(255,255,255,.3);
 }
 
-
+#buy {
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
+  text-decoration: none;
+  user-select: none;
+  padding: .3em .7em;
+  outline: none;
+  border-radius: 7px;
+  background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
+  box-shadow:
+   inset -2px -2px rgba(0,0,0,.3),
+   inset 2px 2px rgba(255,255,255,.3);
+  transition: background-position 1s, color 1s, text-shadow 1s;
+}
+#buy:hover, #buy:focus {
+  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
+  background: #0175b1 repeating-linear-gradient(135deg, #0175b1, #0175b1 10px, #8fd2f5 10px, #8fd2f5 20px, #0175b1 20px) no-repeat;
+  background-size: 1000% 100%;
+}
+#buy:hover {
+  background-position: 0 0;
+}
+#buy:focus {
+  color: rgba(255,255,255,0);
+  text-shadow: rgba(1,117,177,0) -1px 1px, rgba(1,117,177,0) 1px 1px, rgba(1,117,177,0) 1px -1px, rgba(1,117,177,0) -1px -1px;
+  background-position: 900% 0;
+  transition: background-position linear 600s, color .5s, text-shadow .5s;
+}
+#buy:after {
+  content: "загрузка\2026";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: .3em .7em;
+  color: rgba(0,0,0,0);
+  text-shadow: none;
+  transition: 0.01s;
+}
+#buy:focus:after {
+  color: #fff;
+  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
+  transition: .01s;
+}
 
 </style>
 </head>
 <body>
 
 <header>
+	<section class="match">
 	<h1 class="up_match">СОЧИ - УРАЛ</h1>
-	<p class="up_date">30 августа 2020, 20:00 (вс)</p>
-	<p class="up_stadium">Стадион Фишт</p>
-	<h2 class="buy"><a href="https://tickets.pfcsochi.ru/view-available-zones/90">Купить билет</a></h2>
+	<h3 class="up_date">30 августа 2020, 20:00 (вс)</h3>
+	<h3 class="up_stadium">Стадион Фишт</h3>
+	</section>
+  <button id="buy">КУПИТЬ БИЛЕТ</button>
 </header>
 
+
+
 <footer>
-	<ul>
-		<li><a href="templates/api/team_list.html">СОСТАВ КОМАНДЫ</a></li>
-		<li><a href="templates/api/initiative_list.html">ИВЕНТЫ</a></li>
-		<li><a href="templates/api/cabinet.html">БОНУСЫ</a></li>
-	</ul>
+
+		<button id="team">СОСТАВ КОМАНДЫ</button>
+		<button id="intv">ИНИЦИАТИВЫ</button>
+		<button id="cabinet">БОНУСЫ</button>
 </footer>
 
 <script src="frontend/js/mdscene.js"></script> <!-- Класс 3D Сцены -->
+<script type="text/javascript">
+	let b_buy = document.getElementById("buy");
+	let b_team = document.getElementById("team");
+	let b_intv = document.getElementById("intv");
+	let b_cabinet = document.getElementById("cabinet");
+	function changer(url) {document.location.href = url;}
+	//b_team.addEventListener("click", function(){changer("frontend/initiative_list.html")}, false);
+	b_intv.addEventListener("click", function(){changer("frontend/initiative_list.html")}, false);
+	b_cabinet.addEventListener("click", function(){changer("frontend/cabinet.html")}, false);
+	b_buy.addEventListener("click", function(){changer("https://tickets.pfcsochi.ru/view-available-zones/90")}, false);
+
+
+</script>
 </body>
 </html>

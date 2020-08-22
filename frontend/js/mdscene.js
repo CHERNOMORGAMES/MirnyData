@@ -145,9 +145,9 @@ let test = new MDScene();
 set_mesh(1);
 rand_position();
 
-//let mover = Array(MDScene.objects.length -1).fill(1);
+//let mover = Array(MDScene.objects.length -1).fill(1); // Массив для учёта смещения мешей
 
 anim_update();
-initEventListeners();
+initEventListeners(); // Апдейт размера сцены
 set_ground();
 console.log(MDScene.objects.length);
