@@ -27,11 +27,11 @@ class MDScene {
 		background ? MDScene.scene.background = background : MDScene.scene.background = new THREE.Color( 0x3b83bd );
 		fog ? MDScene.scene.fog = fog : null; //Fog instance( color : Integer, near : Float, far : Float )
 
-		this.#init(MDScene.camera, MDScene.scene, MDScene.renderer, MDScene.light);
+		this.init(MDScene.camera, MDScene.scene, MDScene.renderer, MDScene.light);
 		this.update();
 	}
 
-	#init(camera, scene, renderer, light) {
+	init(camera, scene, renderer, light) {
 		camera.position.z = 10;
 		scene.add( light );
 		renderer.setSize(window.innerWidth, window.innerHeight);
