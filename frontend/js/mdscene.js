@@ -4,9 +4,10 @@ class MDScene {
 
  	static objects = [];
 	static scene = new THREE.Scene();
-	static camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 10 ); // 70
+	static camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.01, 100 );
 	static renderer = new THREE.WebGLRenderer({ antialias: true }); //{ antialias: true } 
-	static light = new THREE.AmbientLight( 0xffffff ) 
+	static light = new THREE.AmbientLight( 0xffffff ) ;
+	static controls;
 
 	static rotX = 0.05;
 	static rotY = 0.01;
@@ -21,7 +22,7 @@ class MDScene {
     if (MDScene.#instances > MDScene.#MAX_INSTANCES) {throw new Error('MDScene is a singleton - instance already exists');}
 		
 		background ? MDScene.scene.background = background : MDScene.scene.background = new THREE.Color( 0x3b83bd );
-		fog ? MDScene.scene.fog = fog : null; //Fog instance( color : Integer, near : Float, far : Float )
+		fog ? MDScene.scene.fog = fog : MDScene.scene.fog = new THREE.Fog( 0xcce0ff, 20, 100 ); //Fog instance( color : Integer, near : Float, far : Float )
 
 		this.init(MDScene.camera, MDScene.scene, MDScene.renderer, MDScene.light);
 		this.update();
@@ -29,6 +30,12 @@ class MDScene {
 
 	init(camera, scene, renderer, light) {
 		camera.position.z = 5;
+
+		MDScene.controls = new THREE.OrbitControls( camera, renderer.domElement );
+		MDScene.controls.minPolarAngle = Math.PI * 1 / 4;
+    	MDScene.controls.maxPolarAngle = Math.PI * 3 / 4;
+
+
 		scene.add( light );
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		document.body.appendChild(renderer.domElement);
@@ -36,6 +43,7 @@ class MDScene {
 
 	update() { // Вызов отрисовки.
 		MDScene.renderer.render(MDScene.scene, MDScene.camera);
+		MDScene.controls.update();
 	}
 
 	createMesh(quantity, geometry, material) { // Нуждается объектах, например: new THREE.BoxGeometry( 0.2, 0.2, 0.2 ); new THREE.MeshNormalMaterial();
@@ -107,10 +115,29 @@ function onWindowResize() {
     MDScene.renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+function set_ground() {
+
+	let texture = new THREE.TextureLoader().load( 'frontend/img/grasslight.jpg' );
+	texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+	texture.repeat.set( 25, 25 );
+	texture.anisotropy = 16;
+	texture.encoding = THREE.sRGBEncoding;
+
+	let material = new THREE.MeshLambertMaterial( { map: texture } );
+
+	let mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 400, 400 ), material );
+	mesh.position.y = -1;
+	mesh.rotation.x = - Math.PI / 2;
+	mesh.receiveShadow = true;
+	MDScene.scene.add( mesh );
+}
+
+
 //Вызовы
 
 let test = new MDScene();
-set_mesh(100);
+set_mesh(5);
 rand_position();
 anim_update();
 initEventListeners();
+set_ground();
