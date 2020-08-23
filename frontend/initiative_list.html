@@ -113,16 +113,17 @@ button{width: 34%;
 	b_team.addEventListener("click", function(){changer("games.html")}, false);
 	b_intv.addEventListener("click", function(){changer("../index.html")}, false);
 	b_cabinet.addEventListener("click", function(){changer("cabinet.html")}, false);
-
-	b_buy.addEventListener("click", function(){team}, false);
+	b_buy.addEventListener("click", function(){team()}, false);
 
 	function team() {
 		let cont = document.getElementById("container");
 		let ifrm = document.createElement("iframe");
     ifrm.setAttribute("src", "https://pfcsochi.ru/team/osnovnoy-sostav/");
-    ifrm.style.width = "640px";
-    ifrm.style.height = "480px";
+    ifrm.style.width = "65vw";
+    ifrm.style.height = "85vh";
+    ifrm.style.margin = "7vh 0 0 0";
     cont.appendChild(ifrm);
+    console.log('IFRM done!');
 	}
 
 </script>
