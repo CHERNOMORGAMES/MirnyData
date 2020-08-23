@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<meta http-equiv="Refresh" content="60" />-->
+	<title>Инициативы</title>
+	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+<style>
+
+html {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #272727;
+  touch-action: manipulation;
+}
+
+body {
+	background-image: url(img/intv.jpg);
+  	min-height: 100%;
+  	margin: 0;
+  	padding: 0;
+  	font-family: 'Russo One', sans-serif;
+	color: white;
+	background: #272727;
+	touch-action: manipulation;
+}
+
+header{
+	position: fixed;
+	height : 7%;
+	width: 100%;
+	top: 0;
+	color: white;
+	display: flex;
+	flex-flow: row nowrap;
+  
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
+}
+
+.match{
+	display: flex;
+  flex-grow: 2;
+}
+
+
+h3{margin: auto; font-size: 20px;}
+
+li{list-style-type: none;}
+canvas{display: block;}
+
+footer{
+	position: fixed;
+	height : 9%;
+	width: 100%;
+	bottom : 0;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+button{width: 34%;
+  position: relative;
+  display: inline-block;
+    font-family: 'Russo One', sans-serif;
+  font-size: 2em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
+  text-decoration: none;
+  user-select: none;
+
+  border-radius: 7px;
+  background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
+
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+	<section class="match">
+
+		<h3 class="up_match">Поддержать тренера</h3>
+		<h3 class="up_date">1 сентября 2020, 13:56</h3>
+		<h3 class="up_stadium">Голосов: 483</h3>
+
+	</section>
+  <button id="buy">НОВАЯ</button>
+</header>
+
+
+
+<footer>
+
+		<button id="team">ИГРЫ</button>
+		<button id="intv">ГЛАВНАЯ</button>
+		<button id="cabinet">ПРОКАЧКА</button>
+</footer>
+
+<script type="text/javascript">
+	let b_buy = document.getElementById("buy");
+	let b_team = document.getElementById("team");
+	let b_intv = document.getElementById("intv");
+	let b_cabinet = document.getElementById("cabinet");
+	function changer(url) {document.location.href = url;}
+	b_team.addEventListener("click", function(){changer("games.html")}, false);
+	b_intv.addEventListener("click", function(){changer("../index.html")}, false);
+	b_cabinet.addEventListener("click", function(){changer("cabinet.html")}, false);
+
+	//b_buy.addEventListener("click", function(){changer("https://tickets.pfcsochi.ru/view-available-zones/90")}, false);
+
+
+</script>
+</body>
+</html>

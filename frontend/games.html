@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--<meta http-equiv="Refresh" content="60" />-->
-	<title>МирныйData - АТОМ</title>
+	<meta http-equiv="Refresh" content="60" />
+	<title>Игры</title>
 	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-	<script src="frontend/jslib/three.min.js"></script>
-	<script src="frontend/jslib/orbit.js"></script>
+	<script src="jslib/three.min.js"></script>
+	<script src="jslib/orbit.js"></script>
 <style>
 
 html {
@@ -87,35 +87,34 @@ button{width: 34%;
 <header>
 	<section class="match">
 
-		<h3 class="up_match">СОЧИ - УРАЛ</h3>
-		<h3 class="up_date">30 августа 2020, 20:00 (вс)</h3>
-		<h3 class="up_stadium">Стадион Фишт</h3>
+		<h3 class="up_match">1000 мячей</h3>
+		<h3 class="up_date">Вращение</h3>
+		<h3 class="up_stadium">Каждый обновляется отдельно</h3>
 
 	</section>
-  <button id="buy">КУПИТЬ БИЛЕТ</button>
+  <button id="buy">МЕНЮ</button>
 </header>
 
 
 
 <footer>
 
-		<button id="team">ИГРЫ</button>
+		<button id="team">ГЛАВНАЯ</button>
 		<button id="intv">ИНИЦИАТИВЫ</button>
 		<button id="cabinet">ПРОКАЧКА</button>
 </footer>
 
-<script src="frontend/js/mdscene.js"></script> <!-- Класс 3D Сцены -->
+<script src="js/mdgame.js"></script> <!-- Класс 3D Сцены -->
 <script type="text/javascript">
 	let b_buy = document.getElementById("buy");
 	let b_team = document.getElementById("team");
 	let b_intv = document.getElementById("intv");
 	let b_cabinet = document.getElementById("cabinet");
 	function changer(url) {document.location.href = url;}
-	b_team.addEventListener("click", function(){changer("frontend/games.html")}, false);
-	b_intv.addEventListener("click", function(){changer("frontend/initiative_list.html")}, false);
-	b_cabinet.addEventListener("click", function(){changer("frontend/cabinet.html")}, false);
-	b_buy.addEventListener("click", function(){changer("https://tickets.pfcsochi.ru/view-available-zones/90")}, false);
-
+	b_team.addEventListener("click", function(){changer("../index.html")}, false);
+	b_intv.addEventListener("click", function(){changer("initiative_list.html")}, false);
+	b_cabinet.addEventListener("click", function(){changer("cabinet.html")}, false);
+	//b_buy.addEventListener("click", function(){changer("https://tickets.pfcsochi.ru/view-available-zones/90")}, false);
 
 </script>
 </body>
