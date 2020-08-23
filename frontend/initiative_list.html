@@ -79,6 +79,7 @@ button{width: 34%;
 }
 
 
+
 </style>
 </head>
 <body>
@@ -86,7 +87,7 @@ button{width: 34%;
 <header>
 	<section class="match">
 
-		<h3 class="up_match">Собрать состав</h3>
+		<h3 class="up_match">Состав Команды</h3>
 		<h3 class="up_date">1 сентября 2020, 13:56</h3>
 		<h3 class="up_stadium">Голосов: 483</h3>
 
@@ -113,8 +114,16 @@ button{width: 34%;
 	b_intv.addEventListener("click", function(){changer("../index.html")}, false);
 	b_cabinet.addEventListener("click", function(){changer("cabinet.html")}, false);
 
-	//b_buy.addEventListener("click", function(){changer("https://tickets.pfcsochi.ru/view-available-zones/90")}, false);
+	b_buy.addEventListener("click", function(){team}, false);
 
+	function team() {
+		let cont = document.getElementById("container");
+		let ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "https://pfcsochi.ru/team/osnovnoy-sostav/");
+    ifrm.style.width = "640px";
+    ifrm.style.height = "480px";
+    cont.appendChild(ifrm);
+	}
 
 </script>
 </body>
