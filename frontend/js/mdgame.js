@@ -9,9 +9,9 @@ class MDScene {
 	static light = new THREE.AmbientLight( 0xffffff ) ;
 	static controls;
 
-	static rotX = 0.01;
+	static rotX = 0.05;
 	static rotY = 0.01;
-	static rotZ = 0.01;
+	static rotZ = 0.05;
 
 	static posX = 0.0;
 	static posY = 0.0;
@@ -29,7 +29,7 @@ class MDScene {
 	}
 
 	init(camera, scene, renderer, light) {
-		camera.position.z = 7;
+		camera.position.z = 5;
 
 		MDScene.controls = new THREE.OrbitControls( camera, renderer.domElement );
 		MDScene.controls.minPolarAngle = Math.PI * 1 / 4;
@@ -70,9 +70,9 @@ class MDScene {
 
 function rand_position(){
 	MDScene.objects.forEach(mesh => {
-	mesh.position.x = 0;
-	mesh.position.y = -1.4;
-	mesh.position.z = -4;
+	mesh.position.x = Math.random()*40 -20;
+	mesh.position.y = Math.random()*10 ;
+	mesh.position.z = Math.random()*10 -40;
 	});
 	test.update(); // На всякий случай. Апдейт автоматически происходит при анимации.
 }
@@ -84,21 +84,20 @@ function anim_update(){
 	mesh.rotation.z += MDScene.rotZ; // 0.1
 
 	//let vector3 = new THREE.Vector3( 0, 1, 0 );
-	
+
 	if (mesh.position.y > 1) {mover[i] = -1;}
 	if (mesh.position.y < -1.9) {mover[i] = 1;} 
 	mesh.position.y += 0.03 * mover[i];
 	mesh.position.z += 0.3;
-	
 	});
 	test.update(); // Отрисовка изменений
 	requestAnimationFrame(anim_update); //Передача изменений шагом AnimationFrame.
 }
 
 function set_mesh(n){
-	let geometry = new THREE.SphereGeometry(0.5, 16, 32);
+	let geometry = new THREE.SphereGeometry(0.1, 16, 32);
 
-	var texture = new THREE.TextureLoader().load( 'frontend/img/Football.jpg' );
+	var texture = new THREE.TextureLoader().load( 'img/Football.jpg' );
 	
 	let material = new THREE.MeshPhongMaterial({
 		map	: texture,
@@ -123,7 +122,7 @@ function onWindowResize() {
 
 function set_ground() {
 
-	let texture = new THREE.TextureLoader().load( 'frontend/img/grasslight.jpg' );
+	let texture = new THREE.TextureLoader().load( 'img/grasslight.jpg' );
 	texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 	texture.repeat.set( 25, 25 );
 	texture.anisotropy = 16;
@@ -142,11 +141,11 @@ function set_ground() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(1000);
+set_mesh(5000);
 rand_position();
 
-let mover = Array(MDScene.objects.length -1).fill(1); // Массив для учёта смещения мешей
+let mover = Array(MDScene.objects.length -1).fill(1);
 
 anim_update();
-initEventListeners(); // Апдейт размера сцены
+initEventListeners();
 set_ground();
