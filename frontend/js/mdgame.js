@@ -29,7 +29,7 @@ class MDScene {
 	}
 
 	init(camera, scene, renderer, light) {
-		camera.position.z = 5;
+		camera.position.z = 7;
 
 		MDScene.controls = new THREE.OrbitControls( camera, renderer.domElement );
 		MDScene.controls.minPolarAngle = Math.PI * 1 / 4;
@@ -88,7 +88,7 @@ function anim_update(){
 	if (mesh.position.y > 1) {mover[i] = -1;}
 	if (mesh.position.y < -1.9) {mover[i] = 1;} 
 	mesh.position.y += 0.03 * mover[i];
-	mesh.position.z += 0.3;
+	mesh.position.z += 0.15;
 	});
 	test.update(); // Отрисовка изменений
 	requestAnimationFrame(anim_update); //Передача изменений шагом AnimationFrame.
