@@ -43,18 +43,12 @@ header{
 }
 
 .match{
+	display: flex;
   flex-grow: 2;
 }
 
-.wrap_match{
-	width: 100%;
-	height: 100%
-	display: flex;
-	flex-flow: row nowrap;
-}
 
-
-h1, h2, h3{margin-left: 20px;}
+h3{margin: auto; font-size: 20px;}
 
 li{list-style-type: none;}
 canvas{display: block;}
@@ -92,11 +86,11 @@ button{width: 34%;
 
 <header>
 	<section class="match">
-	<div class="wrap_match">
+
 		<h3 class="up_match">СОЧИ - УРАЛ</h3>
 		<h3 class="up_date">30 августа 2020, 20:00 (вс)</h3>
 		<h3 class="up_stadium">Стадион Фишт</h3>
-	</div>
+
 	</section>
   <button id="buy">КУПИТЬ БИЛЕТ</button>
 </header>
@@ -105,7 +99,7 @@ button{width: 34%;
 
 <footer>
 
-		<button id="team">СОСТАВ КОМАНДЫ</button>
+		<button id="team">СОСТАВ</button>
 		<button id="intv">ИНИЦИАТИВЫ</button>
 		<button id="cabinet">БОНУСЫ</button>
 </footer>
