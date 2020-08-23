@@ -4,6 +4,7 @@
 	<!--<meta http-equiv="Refresh" content="60" />-->
 	<title>МирныйData - АТОМ</title>
 	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
 	<script src="frontend/jslib/three.min.js"></script>
 	<script src="frontend/jslib/orbit.js"></script>
 <style>
@@ -42,16 +43,18 @@ header{
 }
 
 .match{
-	margin: 10px;
-	margin-left: 20px;
-  padding: 0px;
   flex-grow: 2;
 }
 
-.match *{
-	margin: 0px;
-  padding: 0px;
+.wrap_match{
+	width: 100%;
+	height: 100%
+	display: flex;
+	flex-flow: row nowrap;
 }
+
+
+h1, h2, h3{margin-left: 20px;}
 
 li{list-style-type: none;}
 canvas{display: block;}
@@ -68,68 +71,20 @@ footer{
 button{width: 34%;
   position: relative;
   display: inline-block;
+    font-family: 'Russo One', sans-serif;
   font-size: 2em;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 1px;
   color: #fff;
   text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
   text-decoration: none;
   user-select: none;
-  padding: .3em .7em;
-  outline: none;
+
   border-radius: 7px;
   background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
-  box-shadow:
-   inset -2px -2px rgba(0,0,0,.3),
-   inset 2px 2px rgba(255,255,255,.3);
+
 }
 
-#buy {
-  position: relative;
-  display: inline-block;
-  font-size: 2em;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
-  text-decoration: none;
-  user-select: none;
-  padding: .3em .7em;
-  outline: none;
-  border-radius: 7px;
-  background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
-  box-shadow:
-   inset -2px -2px rgba(0,0,0,.3),
-   inset 2px 2px rgba(255,255,255,.3);
-  transition: background-position 1s, color 1s, text-shadow 1s;
-}
-#buy:hover, #buy:focus {
-  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
-  background: #0175b1 repeating-linear-gradient(135deg, #0175b1, #0175b1 10px, #8fd2f5 10px, #8fd2f5 20px, #0175b1 20px) no-repeat;
-  background-size: 1000% 100%;
-}
-#buy:hover {
-  background-position: 0 0;
-}
-#buy:focus {
-  color: rgba(255,255,255,0);
-  text-shadow: rgba(1,117,177,0) -1px 1px, rgba(1,117,177,0) 1px 1px, rgba(1,117,177,0) 1px -1px, rgba(1,117,177,0) -1px -1px;
-  background-position: 900% 0;
-  transition: background-position linear 600s, color .5s, text-shadow .5s;
-}
-#buy:after {
-  content: "загрузка\2026";
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: .3em .7em;
-  color: rgba(0,0,0,0);
-  text-shadow: none;
-  transition: 0.01s;
-}
-#buy:focus:after {
-  color: #fff;
-  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
-  transition: .01s;
-}
 
 </style>
 </head>
@@ -137,9 +92,11 @@ button{width: 34%;
 
 <header>
 	<section class="match">
-	<h1 class="up_match">СОЧИ - УРАЛ</h1>
-	<h3 class="up_date">30 августа 2020, 20:00 (вс)</h3>
-	<h3 class="up_stadium">Стадион Фишт</h3>
+	<div class="wrap_match">
+		<h3 class="up_match">СОЧИ - УРАЛ</h3>
+		<h3 class="up_date">30 августа 2020, 20:00 (вс)</h3>
+		<h3 class="up_stadium">Стадион Фишт</h3>
+	</div>
 	</section>
   <button id="buy">КУПИТЬ БИЛЕТ</button>
 </header>
