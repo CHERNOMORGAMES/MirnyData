@@ -150,4 +150,3 @@ rand_position();
 anim_update();
 initEventListeners(); // Апдейт размера сцены
 set_ground();
-console.log(MDScene.objects.length);
