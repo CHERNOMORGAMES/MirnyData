@@ -141,7 +141,7 @@ function set_ground() {
 //Вызовы
 
 let test = new MDScene();
-set_mesh(2500);
+set_mesh(3000);
 rand_position();
 
 let mover = Array(MDScene.objects.length -1).fill(1);
